@@ -9,15 +9,16 @@ const stats = [
 
 const StatsSection = () => {
   return (
-    <div className="bg-indigo-600 py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-[#151521] py-16 border-y border-white/5 relative">
+      <div className="absolute inset-0 bg-indigo-900/5 pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4 text-center">
           {stats.map((stat) => (
             <div key={stat.id}>
               <div className="text-4xl md:text-5xl font-extrabold text-white mb-2">
                 {stat.value}
               </div>
-              <div className="text-indigo-200 font-medium text-lg">
+              <div className="text-indigo-400 font-medium text-lg">
                 {stat.name}
               </div>
             </div>

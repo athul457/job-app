@@ -9,7 +9,7 @@ import CTASection from '../components/sections/CTASection';
 
 const Home = () => {
     return (
-        <div className="flex flex-col min-h-screen font-sans text-slate-900 bg-white">
+        <div className="flex flex-col min-h-screen font-sans text-white bg-[#151521]">
             <Navbar />
             <main className="flex-grow">
                 <HeroSection />

@@ -26,8 +26,8 @@ const Dashboard = () => {
   return (
     <div className="space-y-8 pb-10">
       {/* Welcome Section */}
-      {/* Welcome Section */}
-      <Card className="bg-gradient-to-r from-indigo-900/50 to-purple-900/50 backdrop-blur-md border border-white/10 text-white shadow-xl relative overflow-hidden">
+     
+      <Card className="bg-gradient-to-r from-indigo-900/50 to-purple-900/50 backdrop-blur-md border border-white/10 text-white shadow-xl relative overflow-hidden p-6">
         <div className="absolute top-0 right-0 p-32 bg-indigo-500/10 blur-3xl rounded-full -mr-16 -mt-16 pointer-events-none" />
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 relative z-10">
             <div>
@@ -48,7 +48,7 @@ const Dashboard = () => {
         <h2 className="text-lg font-bold text-gray-100 mb-4 px-1">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <Link to="/dashboard/new-resume" className="group">
-                <Card className="h-full bg-[#1E1E2D] border border-white/5 hover:border-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 group-hover:-translate-y-1">
+                <Card className="h-full bg-[#1E1E2D] border border-white/5 hover:border-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 group-hover:-translate-y-1 p-6">
                     <div className="h-12 w-12 bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-400 mb-4 group-hover:bg-blue-500 group-hover:text-white transition-colors duration-300">
                         <FilePlus size={24} />
                     </div>
@@ -58,7 +58,7 @@ const Dashboard = () => {
             </Link>
 
             <Link to="/dashboard/my-resumes" className="group">
-                <Card className="h-full bg-[#1E1E2D] border border-white/5 hover:border-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 group-hover:-translate-y-1">
+                <Card className="h-full bg-[#1E1E2D] border border-white/5 hover:border-indigo-500/30 hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 group-hover:-translate-y-1 p-6">
                     <div className="h-12 w-12 bg-indigo-500/10 rounded-xl flex items-center justify-center text-indigo-400 mb-4 group-hover:bg-indigo-500 group-hover:text-white transition-colors duration-300">
                         <Files size={24} />
                     </div>
@@ -68,7 +68,7 @@ const Dashboard = () => {
             </Link>
 
             <Link to="/dashboard/ai-assistant" className="group">
-                <Card className="h-full bg-[#1E1E2D] border border-white/5 hover:border-purple-500/30 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 group-hover:-translate-y-1">
+                <Card className="h-full bg-[#1E1E2D] border border-white/5 hover:border-purple-500/30 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 group-hover:-translate-y-1 p-6">
                     <div className="h-12 w-12 bg-purple-500/10 rounded-xl flex items-center justify-center text-purple-400 mb-4 group-hover:bg-purple-500 group-hover:text-white transition-colors duration-300">
                         <Bot size={24} />
                     </div>

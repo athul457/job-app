@@ -27,12 +27,18 @@ const features = [
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="py-24 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="features" className="py-24 bg-[#151521] relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute top-[10%] left-[5%] w-72 h-72 bg-indigo-500/5 rounded-full blur-3xl" />
+          <div className="absolute bottom-[10%] right-[5%] w-72 h-72 bg-purple-500/5 rounded-full blur-3xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-indigo-600 font-semibold tracking-wide uppercase text-sm mb-3">Our Features</h2>
-          <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Everything You Need to Get Hired</h3>
-          <p className="text-lg text-slate-600">
+          <h2 className="text-indigo-400 font-semibold tracking-wide uppercase text-sm mb-3">Our Features</h2>
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">Everything You Need to Get Hired</h3>
+          <p className="text-lg text-gray-400">
             A complete toolkit designed to give you a competitive edge in today's job market.
           </p>
         </div>

@@ -2,11 +2,11 @@ import { forwardRef } from "react";
 import { Loader2 } from "lucide-react";
 
 const variants = {
-  primary: "bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800 shadow-sm",
-  secondary: "bg-white text-gray-700 border border-gray-200 hover:bg-gray-50 active:bg-gray-100 shadow-sm",
-  danger: "bg-red-600 text-white hover:bg-red-700 active:bg-red-800 shadow-sm",
-  ghost: "bg-transparent text-gray-600 hover:bg-gray-100 active:bg-gray-200",
-  link: "bg-transparent text-blue-600 hover:underline p-0 h-auto",
+  primary: "bg-indigo-600 text-white hover:bg-indigo-500 active:bg-indigo-700 shadow-lg shadow-indigo-500/20 border border-transparent",
+  secondary: "bg-[#151521] text-gray-300 border border-white/10 hover:bg-white/5 active:bg-white/10 shadow-sm",
+  danger: "bg-red-500/10 text-red-500 border border-red-500/20 hover:bg-red-500/20 active:bg-red-500/30",
+  ghost: "bg-transparent text-gray-400 hover:bg-white/5 hover:text-white active:bg-white/10",
+  link: "bg-transparent text-indigo-400 hover:text-indigo-300 hover:underline p-0 h-auto px-0",
 };
 
 const sizes = {
