@@ -8,7 +8,14 @@ export const registerUser = async (userData) => {
     body: JSON.stringify(userData),
   });
   
-  const data = await response.json();
+  const contentType = response.headers.get("content-type");
+  let data;
+  if (contentType && contentType.includes("application/json")) {
+    data = await response.json();
+  } else {
+    data = { message: await response.text() };
+  }
+
   if (!response.ok) {
     throw new Error(data.message || 'Registration failed');
   }
@@ -16,17 +23,43 @@ export const registerUser = async (userData) => {
 };
 
 export const loginUser = async (userData) => {
-  const response = await fetch(`${API_URL}/login`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(userData),
-  });
+  try {
+    const response = await fetch(`${API_URL}/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    });
 
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(data.message || 'Login failed');
+    const contentType = response.headers.get("content-type");
+    let data;
+    if (contentType && contentType.includes("application/json")) {
+      data = await response.json();
+    } else {
+      data = { message: await response.text() };
+    }
+
+    if (!response.ok) throw new Error(data.message || "Login failed");
+    return data;
+  } catch (err) {
+    // Retry once (Render wake-up)
+    console.log("Retrying login due to possible timeout...");
+    const retry = await fetch(`${API_URL}/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(userData),
+    });
+    
+    const contentType = retry.headers.get("content-type");
+    let data;
+    if (contentType && contentType.includes("application/json")) {
+      data = await retry.json();
+    } else {
+      data = { message: await retry.text() };
+    }
+    
+    if (!retry.ok) throw new Error(data.message || "Login failed after retry");
+    return data;
   }
-  return data;
 };
 
 export const getMe = async (token) => {

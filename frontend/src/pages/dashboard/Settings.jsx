@@ -51,7 +51,13 @@ const Settings = () => {
         body: JSON.stringify(profile)
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get("content-type");
+      let data;
+      if (contentType && contentType.includes("application/json")) {
+        data = await response.json();
+      } else {
+        data = { message: await response.text() };
+      }
 
       if (!response.ok) {
         throw new Error(data.message || "Failed to update profile");
@@ -95,7 +101,13 @@ const Settings = () => {
         })
       });
 
-      const data = await response.json();
+      const contentType = response.headers.get("content-type");
+      let data;
+      if (contentType && contentType.includes("application/json")) {
+        data = await response.json();
+      } else {
+        data = { message: await response.text() };
+      }
 
       if (!response.ok) {
         throw new Error(data.message || "Failed to update password");

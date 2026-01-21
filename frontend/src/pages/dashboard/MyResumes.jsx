@@ -31,13 +31,18 @@ const MyResumes = () => {
         }
       });
 
-      if (!response.ok) {
-        const text = await response.text(); 
-        const errData = text ? JSON.parse(text) : {};
-        throw new Error(errData.message || 'Failed to fetch resumes');
+      const contentType = response.headers.get("content-type");
+      let data;
+      if (contentType && contentType.includes("application/json")) {
+        data = await response.json();
+      } else {
+        data = { message: await response.text() };
       }
 
-      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to fetch resumes');
+      }
+
       setResumes(data.resumes || []); 
     } catch (err) {
       console.error(err);
@@ -72,7 +77,16 @@ const MyResumes = () => {
           }
        });
 
-       if (!response.ok) throw new Error('Failed to delete');
+       const contentType = response.headers.get("content-type");
+       let data = {};
+       if (contentType && contentType.includes("application/json")) {
+         data = await response.json();
+       } else {
+         const text = await response.text();
+         data = { message: text };
+       }
+
+       if (!response.ok) throw new Error(data.message || 'Failed to delete');
 
        setResumes(resumes.filter(r => r._id !== id));
        toast.success("Resume deleted successfully");

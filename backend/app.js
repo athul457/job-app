@@ -19,18 +19,17 @@ const app = express();
 
 // Security Middleware
 app.use(helmet()); // Set security headers
-// app.use(express.json({ limit: '10kb' })); // Body limit is 10kb
 app.use(express.json()); // Body limit is 10kb
 
-
-app.use(
-  cors({
-    origin: ["https://idyllic-travesseiro-a022ea.netlify.app","http://localhost:5173"],
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
-  })
-);
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://idyllic-travesseiro-a022ea.netlify.app"
+  ],
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 
 // Rate Limiting

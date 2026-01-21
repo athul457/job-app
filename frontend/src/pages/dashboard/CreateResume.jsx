@@ -56,8 +56,15 @@ const CreateResume = () => {
           // const res = await fetch(`http://localhost:5000/api/resumes/${id}`, {
             headers: { 'Authorization': `Bearer ${token}` }
           });
+          const contentType = res.headers.get("content-type");
+          let data;
+          if (contentType && contentType.includes("application/json")) {
+            data = await res.json();
+          } else {
+            data = { message: await res.text() };
+          }
+          
           if (!res.ok) throw new Error("Failed to load resume");
-          const data = await res.json();
           
           setBasicInfo({ title: data.title, summary: data.content?.summary || "" });
           setContactInfo(data.content?.contact || { fullName: "", jobTitle: "", email: "", phone: "", linkedin: "", github: "" });
@@ -227,8 +234,16 @@ const CreateResume = () => {
             body: JSON.stringify(payload)
         });
 
-        const data = await response.text();
-        const json = data ? JSON.parse(data) : {};
+        const contentType = response.headers.get("content-type");
+        let data;
+        let json = {};
+        if (contentType && contentType.includes("application/json")) {
+             data = await response.json();
+             json = data;
+        } else {
+             data = await response.text();
+             json = { message: data };
+        }
 
         if (!response.ok) {
             throw new Error(json.message || 'Failed to save resume');

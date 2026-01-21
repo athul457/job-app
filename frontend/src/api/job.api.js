@@ -10,47 +10,81 @@ export const getJobs = async (filters = {}) => {
   if (filters.limit) params.append('limit', filters.limit);
 
   const res = await fetch(`${API_URL}/jobs?${params.toString()}`);
-  if (!res.ok) {
-    const error = await res.json();
-    throw new Error(error.message || 'Failed to fetch jobs');
+  
+  const contentType = res.headers.get("content-type");
+  let data;
+  if (contentType && contentType.includes("application/json")) {
+    data = await res.json();
+  } else {
+    data = { message: await res.text() };
   }
-  return res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || 'Failed to fetch jobs');
+  }
+  return data;
 };
 
 export const getJobById = async (id) => {
   const res = await fetch(`${API_URL}/jobs/${id}`);
-  if (!res.ok) {
-    const error = await res.json();
-    throw new Error(error.message || 'Failed to fetch job');
+
+  const contentType = res.headers.get("content-type");
+  let data;
+  if (contentType && contentType.includes("application/json")) {
+    data = await res.json();
+  } else {
+    data = { message: await res.text() };
   }
-  return res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || 'Failed to fetch job');
+  }
+  return data;
 };
 
 export const getMyApplications = async (token) => {
   const res = await fetch(`${API_URL}/jobs/applications`, {
     headers: {
+      'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     },
   });
-  if (!res.ok) {
-    const error = await res.json();
-    throw new Error(error.message || 'Failed to fetch applications');
+
+  const contentType = res.headers.get("content-type");
+  let data;
+  if (contentType && contentType.includes("application/json")) {
+    data = await res.json();
+  } else {
+    data = { message: await res.text() };
   }
-  return res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || 'Failed to fetch applications');
+  }
+  return data;
 };
 
 export const withdrawApplication = async (applicationId, token) => {
   const res = await fetch(`${API_URL}/jobs/applications/${applicationId}`, {
     method: 'DELETE',
     headers: {
+      'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     },
   });
-  if (!res.ok) {
-    const error = await res.json();
-    throw new Error(error.message || 'Failed to withdraw application');
+  
+  const contentType = res.headers.get("content-type");
+  let data;
+  if (contentType && contentType.includes("application/json")) {
+    data = await res.json();
+  } else {
+    data = { message: await res.text() };
   }
-  return res.json();
+
+  if (!res.ok) {
+    throw new Error(data.message || 'Failed to withdraw application');
+  }
+  return data;
 };
 
 export const applyToJob = async (jobId, resumeId, token) => {

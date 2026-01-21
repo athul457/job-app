@@ -23,8 +23,15 @@ const ViewResume = () => {
           }
         });
 
+        const contentType = response.headers.get("content-type");
+        let data;
+        if (contentType && contentType.includes("application/json")) {
+          data = await response.json();
+        } else {
+          data = { message: await response.text() };
+        }
+        
         if (!response.ok) throw new Error('Failed to fetch resume');
-        const data = await response.json();
         setResume(data);
       } catch (err) {
         setError(err.message);

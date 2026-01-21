@@ -32,7 +32,14 @@ const ApplyJobModal = ({ isOpen, onClose, jobTitle, jobId }) => {
       // const res = await fetch("http://localhost:5000/api/resumes", {
         headers: { Authorization: `Bearer ${token}` }
       });
-      const data = await res.json();
+      const contentType = res.headers.get("content-type");
+      let data;
+      if (contentType && contentType.includes("application/json")) {
+        data = await res.json();
+      } else {
+        data = { message: await res.text() };
+      }
+      
       if (res.ok) {
         setResumes(data);
         if (data.length > 0) setSelectedResumeId(data[0]._id);
@@ -80,7 +87,14 @@ const ApplyJobModal = ({ isOpen, onClose, jobTitle, jobId }) => {
             })
         });
 
-        const newResume = await createRes.json();
+        const contentType = createRes.headers.get("content-type");
+        let newResume;
+        if (contentType && contentType.includes("application/json")) {
+            newResume = await createRes.json();
+        } else {
+            newResume = { message: await createRes.text() };
+        }
+        
         if (!createRes.ok) throw new Error(newResume.message || "Failed to process file");
         finalResumeId = newResume._id;
       }
@@ -102,7 +116,14 @@ const ApplyJobModal = ({ isOpen, onClose, jobTitle, jobId }) => {
         body: JSON.stringify({ resumeId: finalResumeId })
       });
 
-      const data = await res.json();
+      const contentType = res.headers.get("content-type");
+      let data;
+      if (contentType && contentType.includes("application/json")) {
+        data = await res.json();
+      } else {
+        data = { message: await res.text() };
+      }
+      
       if (!res.ok) throw new Error(data.message || "Failed to apply");
 
       toast.success("Application submitted successfully!");
