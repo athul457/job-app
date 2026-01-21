@@ -29,7 +29,7 @@ const Dashboard = () => {
       <Card className="bg-gradient-to-r from-blue-300 to-indigo-300 text-black border-none shadow-lg">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
-                <h1 className="text-3xl font-bold">Welcome back, {user?.name || "User"} </h1>
+                <h1 className="text-3xl font-bold"><span className="text-xl italic text-black/70"  >Welcome back,</span> {user?.name || "User"} </h1>
                 <p className="text-black mt-2 text-lg">Ready to land your dream job? Let's get to work.</p>
             </div>
             <Link to="/dashboard/new-resume">

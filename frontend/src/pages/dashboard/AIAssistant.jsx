@@ -224,7 +224,7 @@ const AIAssistant = () => {
                     disabled={loadingKeywords || !jobDescription.trim()}
                     className={`flex items-center gap-2 px-6 py-2.5 rounded-lg font-medium transition-all ${
                         loadingKeywords || !jobDescription.trim()
-                        ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                        ? "bg-gray-400 text-blue-600 cursor-not-allowed"
                         : "bg-blue-600 text-white hover:bg-blue-700 shadow-md"
                     }`}
                     >
