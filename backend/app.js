@@ -25,7 +25,7 @@ app.use(express.json()); // Body limit is 10kb
 
 app.use(
   cors({
-    origin: ["https://cheery-selkie-29d04f.netlify.app","http://localhost:5173"],
+    origin: ["https://idyllic-travesseiro-a022ea.netlify.app","http://localhost:5173"],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true

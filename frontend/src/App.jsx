@@ -11,7 +11,7 @@ import BuilderCreateResume from "./pages/ResumeBuilder/CreateResume";
 import Jobs from "./pages/dashboard/Jobs";
 import JobDetails from "./pages/dashboard/JobDetails";
 import MyApplications from "./pages/dashboard/MyApplications";
-// import Resumes from "./pages/dashboard/Resumes";  
+import Resumes from "./pages/dashboard/Resumes";  
 import AdminDashboard from "./pages/dashboard/AdminDashboard";
 
 // New Dashboard Imports
