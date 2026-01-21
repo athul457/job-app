@@ -10,6 +10,6 @@ if (!process.env.GEMINI_API_KEY) {
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 // Use a model that balances speed and quality, e.g., gemini-1.5-flash
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const model = genAI.getGenerativeModel({ model: "gemini-flash-latest" });
 
 module.exports = model;

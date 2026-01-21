@@ -3,6 +3,7 @@ import {
   LayoutDashboard, 
   FilePlus, 
   Files, 
+  FileSearch,
   Bot, 
   Settings, 
   LogOut, 
@@ -22,6 +23,7 @@ const Sidebar = ({ isOpen, onClose }) => {
     { path: "/dashboard/applications", label: "Applications", icon: <CheckCircle size={20} /> },
     { path: "/dashboard/my-resumes", label: "My Resumes", icon: <Files size={20} /> },
     { path: "/dashboard/new-resume", label: "Create Resume", icon: <FilePlus size={20} /> },
+    { path: "/dashboard/analyze", label: "Resume Analyzer", icon: <FileSearch size={20} /> },
     { path: "/dashboard/ai-assistant", label: "AI Assistant", icon: <Bot size={20} /> },
   ];
 
@@ -76,10 +78,14 @@ const Sidebar = ({ isOpen, onClose }) => {
                 }
               >
                 {/* Icon wrapper to ensure alignment */}
-                <span className={({ isActive }) => isActive ? "text-blue-600" : "text-gray-400 group-hover:text-gray-600"}>
-                    {item.icon}
-                </span>
-                {item.label}
+                {({ isActive }) => (
+                  <>
+                    <span className={isActive ? "text-blue-600" : "text-gray-400 group-hover:text-gray-600"}>
+                        {item.icon}
+                    </span>
+                    {item.label}
+                  </>
+                )}
               </NavLink>
             ))}
             
@@ -95,8 +101,12 @@ const Sidebar = ({ isOpen, onClose }) => {
                 }`
               }
             >
-              <Settings size={20} className="text-gray-400 group-hover:text-gray-600" />
-              Settings
+              {({ isActive }) => (
+                <>
+                  <Settings size={20} className={isActive ? "text-blue-600" : "text-gray-400 group-hover:text-gray-600"} />
+                  Settings
+                </>
+              )}
             </NavLink>
           </nav>
 

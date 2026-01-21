@@ -36,7 +36,14 @@ export const getMe = async (token) => {
     },
   });
 
-  const data = await response.json();
+  let data;
+  const contentType = response.headers.get("content-type");
+  if (contentType && contentType.indexOf("application/json") !== -1) {
+    data = await response.json();
+  } else {
+    data = { message: await response.text() };
+  }
+
   if (!response.ok) {
     throw new Error(data.message || 'Failed to fetch user');
   }

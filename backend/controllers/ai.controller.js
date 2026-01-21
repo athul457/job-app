@@ -315,8 +315,98 @@ const chat = async (req, res, next) => {
     }
 };
 
+// @desc    Analyze a specific resume against a custom job description (No application saving)
+// @route   POST /api/ai/analyze-custom
+// @access  Private
+const analyzeCustom = async (req, res, next) => {
+    try {
+        const { resumeId, jobDescription } = req.body;
+
+        if (!resumeId || !jobDescription) {
+            res.status(400);
+            throw new Error('Please provide resumeId and jobDescription');
+        }
+
+        // 1. Fetch Resume
+        const resume = await Resume.findById(resumeId);
+        
+        if (!resume) { res.status(404); throw new Error('Resume not found'); }
+
+        if (resume.user.toString() !== req.user.id) {
+            res.status(401);
+            throw new Error('Unauthorized to access this resume');
+        }
+
+        // 2. Construct Prompt
+        // Truncate JD to reasonable length to avoid token limits (e.g., 5000 chars)
+        const safeJD = jobDescription.substring(0, 5000);
+        
+        const prompt = `
+            Act as a strict ATS (Applicant Tracking System).
+            Compare the Resume against the provided Job Description.
+
+            JOB DESCRIPTION:
+            ${safeJD}
+
+            RESUME CONTENT:
+            ${JSON.stringify(resume.content).substring(0, 15000)}
+
+            TASK:
+            1. Calculate an ATS Score (0-100) based on keyword matching, relevance, and experience alignment.
+            2. Identify matched keywords (present in both).
+            3. Identify missing keywords (critical for job but missing in resume).
+            4. List key strengths of the resume for this role.
+            5. Provide actionable suggestions to improve the score.
+
+            OUTPUT FORMAT:
+            Strict JSON object only. No markdown. No text.
+            {
+              "atsScore": number,
+              "matchedKeywords": ["string"],
+              "missingKeywords": ["string"],
+              "strengths": ["string"],
+              "suggestions": ["string"]
+            }
+        `;
+
+        // 3. Call Gemini
+        if (!process.env.GEMINI_API_KEY) throw new Error("No API Key");
+
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const text = response.text();
+
+        // 4. Parse JSON
+        let analysisData;
+        try {
+            const cleanedText = text.replace(/```json/g, '').replace(/```/g, '').trim();
+            analysisData = JSON.parse(cleanedText);
+        } catch (e) {
+            console.error('AI Analysis Parse Error', e);
+            // Fallback
+            analysisData = {
+                atsScore: 0,
+                matchedKeywords: [],
+                missingKeywords: [],
+                strengths: ['Error parsing AI response'],
+                suggestions: ['Please try again later']
+            };
+        }
+
+        res.json({
+            success: true,
+            analysis: analysisData
+        });
+
+    } catch (error) {
+        console.error('AI Custom Analysis Error:', error);
+        next(error);
+    }
+};
+
 module.exports = {
     generateKeywords,
     analyzeResume,
-    chat // Exporting the new function
+    analyzeCustom,
+    chat
 };

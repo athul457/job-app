@@ -23,6 +23,7 @@ import ViewResume from "./pages/dashboard/ViewResume";
 import NewResume from "./pages/dashboard/NewResume";
 import AIAssistant from "./pages/dashboard/AIAssistant";
 import Settings from "./pages/dashboard/Settings";
+import AnalyzeResume from "./pages/dashboard/AnalyzeResume";
 
 import { Toaster } from "react-hot-toast";
 
@@ -53,6 +54,7 @@ function App() {
                <Route path="resume/:id" element={<ViewResume />} />
                <Route path="resume/:id/edit" element={<CreateResume />} />
                <Route path="ai-assistant" element={<AIAssistant />} />
+               <Route path="analyze" element={<AnalyzeResume />} />
                <Route path="settings" element={<Settings />} />
              </Route>
 
