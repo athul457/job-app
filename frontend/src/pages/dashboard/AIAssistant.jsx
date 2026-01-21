@@ -108,14 +108,14 @@ const AIAssistant = () => {
   return (
     <div className="h-[calc(100vh-8rem)] flex flex-col bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
       {/* Header & Tabs */}
-      <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-4 text-white">
+      <div className="bg-gradient-to-r from-blue-300 to-indigo-300 p-4 text-black">
         <div className="flex items-center gap-3 mb-4">
           <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
-            <Bot size={24} className="text-white" />
+            <Bot size={24} className="text-black" />
           </div>
           <div>
             <h1 className="text-lg font-bold">AI Companion</h1>
-            <p className="text-blue-100 text-xs">Powered by Gemini AI</p>
+            <p className="text-black text-xs">Powered by Gemini AI</p>
           </div>
         </div>
         
@@ -123,7 +123,7 @@ const AIAssistant = () => {
           <button
             onClick={() => setMode('chat')}
             className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md text-sm font-medium transition-all ${
-              mode === 'chat' ? 'bg-white text-blue-600 shadow-sm' : 'text-blue-100 hover:bg-white/10'
+              mode === 'chat' ? 'bg-white text-blue-900 shadow-sm' : 'text-blue-900 hover:bg-white/10'
             }`}
           >
             <MessageSquare size={16} /> Chat
@@ -131,7 +131,7 @@ const AIAssistant = () => {
           <button
             onClick={() => setMode('keywords')}
             className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md text-sm font-medium transition-all ${
-              mode === 'keywords' ? 'bg-white text-blue-600 shadow-sm' : 'text-blue-100 hover:bg-white/10'
+              mode === 'keywords' ? 'bg-white text-black shadow-sm' : 'text-black hover:bg-white/10'
             }`}
           >
             <FileText size={16} /> Keyword Extractor

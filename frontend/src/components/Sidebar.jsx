@@ -37,12 +37,12 @@ const Sidebar = ({ isOpen, onClose }) => {
 
       {/* Sidebar Container */}
       <aside 
-        className={`fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-gray-100 shadow-xl md:shadow-none transform transition-transform duration-300 ease-in-out md:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 w-72 bg-blue-50 border-r border-blue-100 shadow-xl md:shadow-none transform transition-transform duration-300 ease-in-out md:translate-x-0 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         {/* Logo */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-50 h-20">
+        <div className="flex items-center justify-between p-6 border-b border-blue-100 h-20">
           <div className="flex items-center gap-3">
              <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
                <Briefcase size={22} strokeWidth={2.5} />
@@ -70,8 +70,8 @@ const Sidebar = ({ isOpen, onClose }) => {
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group ${
                     isActive
-                      ? "bg-blue-50 text-blue-700 shadow-sm"
-                      : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                      ? "bg-white text-blue-700 shadow-sm"
+                      : "text-gray-600 hover:bg-blue-100 hover:text-gray-900"
                   }`
                 }
               >
@@ -90,8 +90,8 @@ const Sidebar = ({ isOpen, onClose }) => {
               className={({ isActive }) =>
                 `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group ${
                   isActive
-                    ? "bg-blue-50 text-blue-700 shadow-sm"
-                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    ? "bg-white text-blue-700 shadow-sm"
+                    : "text-gray-600 hover:bg-blue-100 hover:text-gray-900"
                 }`
               }
             >
@@ -101,7 +101,7 @@ const Sidebar = ({ isOpen, onClose }) => {
           </nav>
 
           {/* User / Logout */}
-          <div className="border-t border-gray-100 pt-4">
+          <div className="border-t border-blue-100 pt-4">
             <button 
               onClick={logout}
               className="flex items-center gap-3 px-4 py-3 w-full text-sm font-medium text-gray-600 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors group"

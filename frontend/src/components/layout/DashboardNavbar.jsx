@@ -28,14 +28,14 @@ const DashboardNavbar = ({ onMenuClick }) => {
             </div>
 
             {/* Middle: Search (Optional, Visual only for now) */}
-            <div className="hidden md:flex items-center w-96 px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl focus-within:ring-2 focus-within:ring-blue-100 transition-all">
+            {/* <div className="hidden md:flex items-center w-96 px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl focus-within:ring-2 focus-within:ring-blue-100 transition-all">
                 <Search size={18} className="text-gray-400" />
                 <input 
                     type="text" 
                     placeholder="Search..." 
                     className="bg-transparent border-none outline-none text-sm w-full ml-2 text-gray-700 placeholder-gray-400"
                 />
-            </div>
+            </div> */}
 
             {/* Right: Actions & Profile */}
             <div className="flex items-center gap-4">

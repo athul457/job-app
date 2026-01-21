@@ -26,14 +26,14 @@ const Dashboard = () => {
   return (
     <div className="space-y-8 pb-10">
       {/* Welcome Section */}
-      <Card className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-none shadow-lg">
+      <Card className="bg-gradient-to-r from-blue-300 to-indigo-300 text-black border-none shadow-lg">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
-                <h1 className="text-3xl font-bold">Welcome back, {user?.name || "User"}! 👋</h1>
-                <p className="text-blue-100 mt-2 text-lg">Ready to land your dream job? Let's get to work.</p>
+                <h1 className="text-3xl font-bold">Welcome back, {user?.name || "User"} </h1>
+                <p className="text-black mt-2 text-lg">Ready to land your dream job? Let's get to work.</p>
             </div>
             <Link to="/dashboard/new-resume">
-                <Button variant="secondary" size="lg" className="shadow-none border-none bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm">
+                <Button variant="secondary" size="lg" className="shadow-none border-none bg-blue-400 text-black hover:bg-blue-200 backdrop-blur-sm">
                     <FilePlus className="mr-2 h-5 w-5" />
                     Create New Resume
                 </Button>

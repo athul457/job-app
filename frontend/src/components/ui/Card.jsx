@@ -1,6 +1,6 @@
-const Card = ({ children, className = "", ...props }) => {
+export const Card = ({ children, className = "", ...props }) => {
   return (
-    <div 
+    <div
       className={`
         bg-white border border-gray-100 rounded-2xl shadow-soft p-6 
         ${className}

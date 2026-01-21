@@ -1,7 +1,7 @@
 import React from 'react';
 import { FileText, Calendar, ArrowRight, Trash2, Edit } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import Card from './ui/Card';
+import { Card } from './ui/Card';
 
 const ResumeCard = ({ resume, onDelete, isDeleting }) => {
   return (
@@ -35,11 +35,17 @@ const ResumeCard = ({ resume, onDelete, isDeleting }) => {
           {new Date(resume.updatedAt).toLocaleDateString()}
         </span>
         
-        <Link 
+        <Link
           to={`/dashboard/create-resume/${resume._id}`} // Updated to use correct edit route
           className="text-sm font-medium text-blue-600 hover:text-blue-700 flex items-center gap-1 group/link"
         >
           Edit Resume <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
+        </Link>
+        <Link
+          to={`/dashboard/resume/${resume._id}`}
+          className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-700 flex items-center gap-1 group/link"
+        >
+          View <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
         </Link>
       </div>
     </Card>
