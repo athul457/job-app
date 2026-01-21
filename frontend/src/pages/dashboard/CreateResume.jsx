@@ -52,7 +52,7 @@ const CreateResume = () => {
     if (id && token) {
       const fetchResume = async () => {
         try {
-          const res = await fetch(`https://job-app-gl03.onrender.com/api/resumes/${id}`, {
+          const res = await fetch(`${import.meta.env.VITE_API_URL}/api/resumes/${id}`, {
           // const res = await fetch(`http://localhost:5000/api/resumes/${id}`, {
             headers: { 'Authorization': `Bearer ${token}` }
           });
@@ -209,8 +209,8 @@ const CreateResume = () => {
 
     try {
         const url = id 
-            ? `https://job-app-gl03.onrender.com/api/resumes/${id}` 
-            : 'https://job-app-gl03.onrender.com/api/resumes';
+            ? `${import.meta.env.VITE_API_URL}/api/resumes/${id}` 
+            : `${import.meta.env.VITE_API_URL}/api/resumes`;
             
         // const url = id 
         //     ? `http://localhost:5000/api/resumes/${id}` 

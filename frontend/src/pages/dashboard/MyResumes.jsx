@@ -18,8 +18,8 @@ const MyResumes = () => {
     try {
       setLoading(true);
       const url = searchTerm 
-        ? `https://job-app-gl03.onrender.com/api/resumes?keyword=${searchTerm}` 
-        : 'https://job-app-gl03.onrender.com/api/resumes';
+        ? `${import.meta.env.VITE_API_URL}/api/resumes?keyword=${searchTerm}` 
+        : `${import.meta.env.VITE_API_URL}/api/resumes`;
         
       // const url = searchTerm 
       //   ? `http://localhost:5000/api/resumes?keyword=${searchTerm}` 
@@ -64,7 +64,7 @@ const MyResumes = () => {
     
     setDeletingId(id);
     try {
-       const response = await fetch(`https://job-app-gl03.onrender.com/api/resumes/${id}`, {
+       const response = await fetch(`${import.meta.env.VITE_API_URL}/api/resumes/${id}`, {
        // const response = await fetch(`http://localhost:5000/api/resumes/${id}`, {
           method: 'DELETE',
           headers: {
