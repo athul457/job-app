@@ -21,7 +21,8 @@ const app = express();
 app.use(helmet()); // Set security headers
 app.use(express.json({ limit: '10kb' })); // Body limit is 10kb
 app.use(cors({
-    origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175', 'http://localhost:5176'],
+    origin: ['https://cheery-selkie-29d04f.netlify.app/'],
+    // origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:5175', 'http://localhost:5176'],
     credentials: true
 }));
 // app.use(mongoSanitize()); // Prevent NoSQL injection
