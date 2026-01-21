@@ -4,6 +4,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
 import Login from "./pages/Auth/Login";
 import Register from "./pages/Auth/Register";
+
 import SelectTemplate from "./pages/ResumeBuilder/SelectTemplate";
 
 import BuilderCreateResume from "./pages/ResumeBuilder/CreateResume";
