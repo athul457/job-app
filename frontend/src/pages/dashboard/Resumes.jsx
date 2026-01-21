@@ -22,7 +22,8 @@ const Resumes = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch(`http://localhost:5000/api/resumes?keyword=${debouncedKeyword}&page=${page}&limit=9`, {
+      const res = await fetch(`https://job-app-gl03.onrender.com/api/resumes?keyword=${debouncedKeyword}&page=${page}&limit=9`, {
+      // const res = await fetch(`http://localhost:5000/api/resumes?keyword=${debouncedKeyword}&page=${page}&limit=9`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
@@ -42,7 +43,8 @@ const Resumes = () => {
     if (!window.confirm('Are you sure you want to delete this resume?')) return;
     try {
       const token = localStorage.getItem('token');
-      await fetch(`http://localhost:5000/api/resumes/${id}`, {
+      await fetch(`https://job-app-gl03.onrender.com/api/resumes/${id}`, {
+      // await fetch(`http://localhost:5000/api/resumes/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` }
       });

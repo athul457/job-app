@@ -28,7 +28,8 @@ const ApplyJobModal = ({ isOpen, onClose, jobTitle, jobId }) => {
   const fetchResumes = async () => {
     setFetchingResumes(true);
     try {
-      const res = await fetch("http://localhost:5000/api/resumes", {
+      const res = await fetch("https://job-app-gl03.onrender.com/api/resumes", {
+      // const res = await fetch("http://localhost:5000/api/resumes", {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -62,7 +63,8 @@ const ApplyJobModal = ({ isOpen, onClose, jobTitle, jobId }) => {
         }
 
         // Create a basic resume entry for this file
-        const createRes = await fetch("http://localhost:5000/api/resumes", {
+        const createRes = await fetch("https://job-app-gl03.onrender.com/api/resumes", {
+        // const createRes = await fetch("http://localhost:5000/api/resumes", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -90,7 +92,8 @@ const ApplyJobModal = ({ isOpen, onClose, jobTitle, jobId }) => {
       }
 
       // Apply to Job
-      const res = await fetch(`http://localhost:5000/api/jobs/${jobId}/apply`, {
+      const res = await fetch(`https://job-app-gl03.onrender.com/api/jobs/${jobId}/apply`, {
+      // const res = await fetch(`http://localhost:5000/api/jobs/${jobId}/apply`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

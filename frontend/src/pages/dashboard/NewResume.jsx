@@ -63,7 +63,8 @@ const NewResume = () => {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/api/resumes', {
+      const response = await fetch('https://job-app-gl03.onrender.com/api/resumes', {
+      // const response = await fetch('http://localhost:5000/api/resumes', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

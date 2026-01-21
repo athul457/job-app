@@ -18,8 +18,12 @@ const MyResumes = () => {
     try {
       setLoading(true);
       const url = searchTerm 
-        ? `http://localhost:5000/api/resumes?keyword=${searchTerm}` 
-        : 'http://localhost:5000/api/resumes';
+        ? `https://job-app-gl03.onrender.com/api/resumes?keyword=${searchTerm}` 
+        : 'https://job-app-gl03.onrender.com/api/resumes';
+        
+      // const url = searchTerm 
+      //   ? `http://localhost:5000/api/resumes?keyword=${searchTerm}` 
+      //   : 'http://localhost:5000/api/resumes';
         
       const response = await fetch(url, {
         headers: {
@@ -60,7 +64,8 @@ const MyResumes = () => {
     
     setDeletingId(id);
     try {
-       const response = await fetch(`http://localhost:5000/api/resumes/${id}`, {
+       const response = await fetch(`https://job-app-gl03.onrender.com/api/resumes/${id}`, {
+       // const response = await fetch(`http://localhost:5000/api/resumes/${id}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${token}`

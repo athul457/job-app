@@ -52,7 +52,8 @@ const CreateResume = () => {
     if (id && token) {
       const fetchResume = async () => {
         try {
-          const res = await fetch(`http://localhost:5000/api/resumes/${id}`, {
+          const res = await fetch(`https://job-app-gl03.onrender.com/api/resumes/${id}`, {
+          // const res = await fetch(`http://localhost:5000/api/resumes/${id}`, {
             headers: { 'Authorization': `Bearer ${token}` }
           });
           if (!res.ok) throw new Error("Failed to load resume");
@@ -208,8 +209,12 @@ const CreateResume = () => {
 
     try {
         const url = id 
-            ? `http://localhost:5000/api/resumes/${id}` 
-            : 'http://localhost:5000/api/resumes';
+            ? `https://job-app-gl03.onrender.com/api/resumes/${id}` 
+            : 'https://job-app-gl03.onrender.com/api/resumes';
+            
+        // const url = id 
+        //     ? `http://localhost:5000/api/resumes/${id}` 
+        //     : 'http://localhost:5000/api/resumes';
             
         const method = id ? 'PUT' : 'POST';
 

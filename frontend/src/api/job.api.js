@@ -1,4 +1,5 @@
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://job-app-gl03.onrender.com/api';
+// const API_URL = 'http://localhost:5000/api';
 
 export const getJobs = async (filters = {}) => {
   const params = new URLSearchParams();
