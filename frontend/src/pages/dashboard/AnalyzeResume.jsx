@@ -85,30 +85,30 @@ const AnalyzeResume = () => {
     <div className="space-y-6 pb-10 fade-in">
         {/* Header */}
         <div className="flex flex-col gap-2">
-            <h1 className="text-2xl font-bold flex items-center gap-2">
-                <FileSearch className="text-blue-600" /> Resume Analyzer
+            <h1 className="text-2xl font-bold flex items-center gap-2 text-gray-100">
+                <FileSearch className="text-indigo-500" /> Resume Analyzer
             </h1>
-            <p className="text-gray-500">Check your resume ATS score against any job description instantly.</p>
+            <p className="text-gray-400">Check your resume ATS score against any job description instantly.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             
             {/* Input Section */}
-            <Card className="h-fit">
-                <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+            <Card className="h-fit bg-[#1E1E2D] border-white/5">
+                <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 text-gray-100">
                     <Sparkles size={18} className="text-yellow-500" /> Analysis Setup
                 </h2>
 
                 <div className="space-y-4">
                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Select Resume</label>
+                        <label className="block text-sm font-medium text-gray-400 mb-2">Select Resume</label>
                         {loading ? (
-                            <div className="h-10 w-full bg-gray-100 rounded-xl animate-pulse" />
+                            <div className="h-10 w-full bg-[#151521] rounded-xl animate-pulse" />
                         ) : (
                             <select 
                                 value={selectedResume}
                                 onChange={(e) => setSelectedResume(e.target.value)}
-                                className="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                                className="w-full p-3 bg-[#151521] border border-white/5 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition-all text-white"
                             >
                                 <option value="" disabled>Select a resume...</option>
                                 {resumes.map(r => (
@@ -117,24 +117,24 @@ const AnalyzeResume = () => {
                             </select>
                         )}
                         {resumes.length === 0 && !loading && (
-                             <p className="text-xs text-red-500 mt-1">No resumes found. Please create one first.</p>
+                             <p className="text-xs text-red-400 mt-1">No resumes found. Please create one first.</p>
                         )}
                      </div>
 
                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Job Description (JD)</label>
+                        <label className="block text-sm font-medium text-gray-400 mb-2">Job Description (JD)</label>
                         <textarea 
                             value={jobDescription}
                             onChange={(e) => setJobDescription(e.target.value)}
                             placeholder="Paste the full job description here..."
-                            className="w-full p-4 h-64 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none resize-none transition-all text-sm"
+                            className="w-full p-4 h-64 bg-[#151521] border border-white/5 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none resize-none transition-all text-sm text-white placeholder-gray-600"
                         />
                      </div>
 
                      <Button 
                         onClick={handleAnalyze} 
                         disabled={analyzing || !selectedResume || !jobDescription.trim()}
-                        className="w-full"
+                        className="w-full bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-500/20"
                         size="lg"
                      >
                         {analyzing ? (
@@ -149,32 +149,32 @@ const AnalyzeResume = () => {
             {/* Results Section */}
             <div className="space-y-6">
                  {analyzing && (
-                     <Card className="flex flex-col items-center justify-center min-h-[400px] border-dashed">
-                          <Loader2 size={48} className="text-blue-500 animate-spin mb-4" />
-                          <h3 className="text-lg font-semibold text-gray-700">Analyzing your resume...</h3>
-                          <p className="text-gray-400 text-sm mt-2">Checking keywords, formatting, and relevance.</p>
+                     <Card className="flex flex-col items-center justify-center min-h-[400px] border-dashed border-white/10 bg-[#1E1E2D]">
+                          <Loader2 size={48} className="text-indigo-500 animate-spin mb-4" />
+                          <h3 className="text-lg font-semibold text-gray-200">Analyzing your resume...</h3>
+                          <p className="text-gray-500 text-sm mt-2">Checking keywords, formatting, and relevance.</p>
                      </Card>
                  )}
 
                  {!analyzing && !analysisResult && (
-                     <Card className="flex flex-col items-center justify-center min-h-[400px] border-dashed opacity-75">
-                         <div className="h-20 w-20 bg-blue-50 rounded-full flex items-center justify-center mb-4">
-                             <FileSearch size={32} className="text-blue-300" />
+                     <Card className="flex flex-col items-center justify-center min-h-[400px] border-dashed bg-[#1E1E2D] border-white/5 opacity-75">
+                         <div className="h-20 w-20 bg-[#151521] rounded-full flex items-center justify-center mb-4 shadow-inner">
+                             <FileSearch size={32} className="text-indigo-500" />
                          </div>
                          <h3 className="text-lg font-semibold text-gray-400">Ready to Analyze</h3>
-                         <p className="text-gray-400 text-sm mt-2 max-w-xs text-center">Select your resume and paste a job description to see your ATS score and insights.</p>
+                         <p className="text-gray-500 text-sm mt-2 max-w-xs text-center">Select your resume and paste a job description to see your ATS score and insights.</p>
                      </Card>
                  )}
 
                  {!analyzing && analysisResult && (
                      <div className="space-y-6 animate-in slide-in-from-bottom-4 fade-in duration-500">
                          {/* Score Card */}
-                         <Card className="relative overflow-hidden">
-                             <div className="absolute top-0 right-0 p-32 bg-blue-500/5 blur-3xl rounded-full -mr-16 -mt-16 pointer-events-none" />
+                         <Card className="relative overflow-hidden bg-[#1E1E2D] border-white/5">
+                             <div className="absolute top-0 right-0 p-32 bg-indigo-500/10 blur-3xl rounded-full -mr-16 -mt-16 pointer-events-none" />
                              <div className="flex items-center justify-between">
                                  <div>
-                                     <h3 className="text-lg font-semibold text-gray-700">ATS Compatibility Score</h3>
-                                     <p className="text-gray-500 text-sm mt-1">Based on keyword matching & relevance</p>
+                                     <h3 className="text-lg font-semibold text-gray-100">ATS Compatibility Score</h3>
+                                     <p className="text-gray-400 text-sm mt-1">Based on keyword matching & relevance</p>
                                  </div>
                                  <div className={`relative h-24 w-24 rounded-full border-4 flex items-center justify-center ${getScoreColor(analysisResult.atsScore)}`}>
                                      <span className="text-2xl font-bold">{analysisResult.atsScore}%</span>
@@ -183,20 +183,20 @@ const AnalyzeResume = () => {
                          </Card>
 
                          {/* Keywords */}
-                         <Card>
-                             <h3 className="font-semibold mb-4 text-gray-800">Keyword Analysis</h3>
+                         <Card className="bg-[#1E1E2D] border-white/5">
+                             <h3 className="font-semibold mb-4 text-gray-100">Keyword Analysis</h3>
                              <div className="space-y-4">
                                  <div>
                                      <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Matched Keywords</p>
                                      <div className="flex flex-wrap gap-2">
                                          {analysisResult.matchedKeywords.length > 0 ? (
                                              analysisResult.matchedKeywords.map((k, i) => (
-                                                 <span key={i} className="px-2.5 py-1 bg-green-50 text-green-700 border border-green-100 rounded-md text-sm font-medium flex items-center gap-1">
+                                                 <span key={i} className="px-2.5 py-1 bg-green-500/10 text-green-400 border border-green-500/20 rounded-md text-sm font-medium flex items-center gap-1">
                                                      <Check size={12} /> {k}
                                                  </span>
                                              ))
                                          ) : (
-                                             <span className="text-sm text-gray-400 italic">No exact keyword matches found.</span>
+                                             <span className="text-sm text-gray-500 italic">No exact keyword matches found.</span>
                                          )}
                                      </div>
                                  </div>
@@ -206,12 +206,12 @@ const AnalyzeResume = () => {
                                      <div className="flex flex-wrap gap-2">
                                          {analysisResult.missingKeywords.length > 0 ? (
                                              analysisResult.missingKeywords.map((k, i) => (
-                                                 <span key={i} className="px-2.5 py-1 bg-red-50 text-red-700 border border-red-100 rounded-md text-sm font-medium flex items-center gap-1">
+                                                 <span key={i} className="px-2.5 py-1 bg-red-500/10 text-red-400 border border-red-500/20 rounded-md text-sm font-medium flex items-center gap-1">
                                                      <X size={12} /> {k}
                                                  </span>
                                              ))
                                          ) : (
-                                             <span className="text-sm text-green-600 font-medium">Great job! No major keywords missing.</span>
+                                             <span className="text-sm text-green-400 font-medium">Great job! No major keywords missing.</span>
                                          )}
                                      </div>
                                  </div>
@@ -219,25 +219,25 @@ const AnalyzeResume = () => {
                          </Card>
 
                          {/* Feedback */}
-                         <Card>
-                             <h3 className="font-semibold mb-4 text-gray-800">AI Feedback</h3>
+                         <Card className="bg-[#1E1E2D] border-white/5">
+                             <h3 className="font-semibold mb-4 text-gray-100">AI Feedback</h3>
                              <div className="space-y-4">
-                                 <div className="p-4 bg-blue-50/50 rounded-xl border border-blue-100">
-                                     <h4 className="flex items-center gap-2 font-medium text-blue-900 mb-2">
+                                 <div className="p-4 bg-blue-500/10 rounded-xl border border-blue-500/20">
+                                     <h4 className="flex items-center gap-2 font-medium text-blue-400 mb-2">
                                          <Sparkles size={16} /> Key Strengths
                                      </h4>
-                                     <ul className="list-disc list-inside text-sm text-blue-800 space-y-1">
+                                     <ul className="list-disc list-inside text-sm text-blue-300 space-y-1">
                                          {analysisResult.strengths.map((s, i) => (
                                              <li key={i}>{s}</li>
                                          ))}
                                      </ul>
                                  </div>
 
-                                 <div className="p-4 bg-amber-50/50 rounded-xl border border-amber-100">
-                                     <h4 className="flex items-center gap-2 font-medium text-amber-900 mb-2">
+                                 <div className="p-4 bg-amber-500/10 rounded-xl border border-amber-500/20">
+                                     <h4 className="flex items-center gap-2 font-medium text-amber-400 mb-2">
                                          <AlertCircle size={16} /> Suggestions for Improvement
                                      </h4>
-                                     <ul className="list-disc list-inside text-sm text-amber-800 space-y-1">
+                                     <ul className="list-disc list-inside text-sm text-amber-300 space-y-1">
                                          {analysisResult.suggestions.map((s, i) => (
                                              <li key={i}>{s}</li>
                                          ))}

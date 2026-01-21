@@ -20,11 +20,11 @@ const DashboardNavbar = ({ onMenuClick }) => {
             <div className="flex items-center gap-4">
                 <button 
                     onClick={onMenuClick}
-                    className="p-2 text-gray-500 hover:bg-gray-100 rounded-lg md:hidden transition-colors"
+                    className="p-2 text-gray-400 hover:bg-white/5 rounded-lg md:hidden transition-colors"
                 >
                     <Menu size={24} />
                 </button>
-                <h1 className="text-xl font-bold text-gray-800 hidden md:block">{getPageTitle()}</h1>
+                <h1 className="text-xl font-bold text-gray-100 hidden md:block">{getPageTitle()}</h1>
             </div>
 
             {/* Middle: Search (Optional, Visual only for now) */}
@@ -39,42 +39,42 @@ const DashboardNavbar = ({ onMenuClick }) => {
 
             {/* Right: Actions & Profile */}
             <div className="flex items-center gap-4">
-                <button className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors relative">
+                <button className="p-2 text-gray-400 hover:text-gray-200 hover:bg-white/10 rounded-full transition-colors relative">
                     <Bell size={20} />
-                    <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+                    <span className="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-[#151521]"></span>
                 </button>
 
-                <div className="h-8 w-px bg-gray-200 hidden sm:block"></div>
+                <div className="h-8 w-px bg-white/10 hidden sm:block"></div>
 
                 {user && (
                     <div className="flex items-center gap-3">
                         <div className="text-right hidden md:block">
-                            <p className="text-sm font-semibold text-gray-900 leading-none">{user.name}</p>
+                            <p className="text-sm font-semibold text-gray-200 leading-none">{user.name}</p>
                             <p className="text-xs text-gray-500 mt-0.5">{user.role}</p>
                         </div>
                         
                         <div className="group relative">
                             <button className="flex items-center gap-2 focus:outline-none">
-                                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold shadow-md ring-2 ring-white">
+                                <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-500/20 ring-2 ring-white/10">
                                     {user.name ? user.name.charAt(0).toUpperCase() : 'U'}
                                 </div>
-                                <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-600 transition-colors" />
+                                <ChevronDown size={14} className="text-gray-400 group-hover:text-gray-200 transition-colors" />
                             </button>
                             
                             {/* Dropdown Menu */}
-                            <div className="absolute right-0 top-full mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all transform origin-top-right z-50">
+                            <div className="absolute right-0 top-full mt-2 w-56 bg-[#1E1E2D] rounded-xl shadow-xl border border-white/5 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all transform origin-top-right z-50">
                                 <div className="p-2">
-                                    <div className="px-3 py-2 border-b border-gray-50 mb-1 md:hidden">
-                                        <p className="text-sm font-bold text-gray-900">{user.name}</p>
-                                        <p className="text-xs text-slate-500">{user.email}</p>
+                                    <div className="px-3 py-2 border-b border-white/5 mb-1 md:hidden">
+                                        <p className="text-sm font-bold text-gray-200">{user.name}</p>
+                                        <p className="text-xs text-gray-500">{user.email}</p>
                                     </div>
                                     
-                                    <Link to="/dashboard/settings" className="flex items-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg transition-colors">
+                                    <Link to="/dashboard/settings" className="flex items-center gap-2 px-3 py-2 text-sm text-gray-300 hover:bg-white/5 rounded-lg transition-colors">
                                         Profile Settings
                                     </Link>
                                     <button 
                                         onClick={logout}
-                                        className="w-full text-left flex items-center gap-2 px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                                        className="w-full text-left flex items-center gap-2 px-3 py-2 text-sm text-red-400 hover:bg-red-500/10 rounded-lg transition-colors"
                                     >
                                         Sign Out
                                     </button>

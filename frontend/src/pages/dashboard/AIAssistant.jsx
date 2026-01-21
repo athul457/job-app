@@ -106,24 +106,24 @@ const AIAssistant = () => {
   };
 
   return (
-    <div className="h-[calc(100vh-8rem)] flex flex-col bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+    <div className="h-[calc(100vh-8rem)] flex flex-col bg-[#1E1E2D] rounded-xl shadow-xl border border-white/5 overflow-hidden">
       {/* Header & Tabs */}
-      <div className="bg-gradient-to-r from-blue-300 to-indigo-300 p-4 text-black">
+      <div className="bg-gradient-to-r from-indigo-900 to-purple-900 p-4 text-white">
         <div className="flex items-center gap-3 mb-4">
-          <div className="p-2 bg-white/20 rounded-lg backdrop-blur-sm">
-            <Bot size={24} className="text-black" />
+          <div className="p-2 bg-white/10 rounded-lg backdrop-blur-sm border border-white/10">
+            <Bot size={24} className="text-indigo-300" />
           </div>
           <div>
-            <h1 className="text-lg font-bold">AI Companion</h1>
-            <p className="text-black text-xs">Powered by Gemini AI</p>
+            <h1 className="text-lg font-bold text-white">AI Companion</h1>
+            <p className="text-indigo-200 text-xs">Powered by Gemini AI</p>
           </div>
         </div>
         
-        <div className="flex gap-2 bg-white/10 p-1 rounded-lg">
+        <div className="flex gap-2 bg-[#151521]/50 p-1 rounded-lg border border-white/5">
           <button
             onClick={() => setMode('chat')}
             className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md text-sm font-medium transition-all ${
-              mode === 'chat' ? 'bg-white text-blue-900 shadow-sm' : 'text-blue-900 hover:bg-white/10'
+              mode === 'chat' ? 'bg-[#1E1E2D] text-white shadow-sm border border-white/5' : 'text-gray-400 hover:bg-white/5 hover:text-white'
             }`}
           >
             <MessageSquare size={16} /> Chat
@@ -131,7 +131,7 @@ const AIAssistant = () => {
           <button
             onClick={() => setMode('keywords')}
             className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md text-sm font-medium transition-all ${
-              mode === 'keywords' ? 'bg-white text-black shadow-sm' : 'text-black hover:bg-white/10'
+              mode === 'keywords' ? 'bg-[#1E1E2D] text-white shadow-sm border border-white/5' : 'text-gray-400 hover:bg-white/5 hover:text-white'
             }`}
           >
             <FileText size={16} /> Keyword Extractor
@@ -144,25 +144,25 @@ const AIAssistant = () => {
         
         {/* CHAT MODE */}
         {mode === 'chat' && (
-          <div className="absolute inset-0 flex flex-col bg-gray-50">
+          <div className="absolute inset-0 flex flex-col bg-[#151521]">
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
               {messages.map((msg) => (
                 <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[85%] md:max-w-[70%] rounded-2xl p-4 flex items-start gap-3 shadow-sm ${
+                  <div className={`max-w-[85%] md:max-w-[70%] rounded-2xl p-4 flex items-start gap-3 shadow-md ${
                     msg.sender === 'user' 
-                      ? 'bg-blue-600 text-white rounded-tr-none' 
-                      : 'bg-white text-gray-800 border border-gray-100 rounded-tl-none'
+                      ? 'bg-indigo-600 text-white rounded-tr-none' 
+                      : 'bg-[#1E1E2D] text-gray-200 border border-white/5 rounded-tl-none'
                   }`}>
-                    <div className={`mt-1 shrink-0 p-1 rounded-full ${msg.sender === 'user' ? 'bg-blue-500' : 'bg-blue-50'}`}>
+                    <div className={`mt-1 shrink-0 p-1 rounded-full ${msg.sender === 'user' ? 'bg-indigo-500' : 'bg-white/5'}`}>
                       {msg.sender === 'user' 
-                        ? <User size={14} className="text-blue-50" /> 
-                        : <Bot size={14} className="text-blue-600" />
+                        ? <User size={14} className="text-white" /> 
+                        : <Bot size={14} className="text-indigo-400" />
                       }
                     </div>
                     <div>
-                        <p className={`text-sm leading-relaxed whitespace-pre-wrap ${msg.isError ? 'text-red-500' : ''}`}>{msg.text}</p>
+                        <p className={`text-sm leading-relaxed whitespace-pre-wrap ${msg.isError ? 'text-red-400' : ''}`}>{msg.text}</p>
                         {msg.source === 'local_fallback' && (
-                            <span className="text-[10px] opacity-70 mt-1 block flex items-center gap-1">
+                            <span className="text-[10px] opacity-70 mt-1 block flex items-center gap-1 text-yellow-500">
                                 <AlertCircle size={10} /> Offline Mode
                             </span>
                         )}
@@ -172,16 +172,16 @@ const AIAssistant = () => {
               ))}
               {thinking && (
                 <div className="flex justify-start">
-                   <div className="bg-white border border-gray-100 rounded-2xl p-4 rounded-tl-none flex items-center gap-2 shadow-sm">
-                        <Loader2 size={16} className="animate-spin text-blue-500" />
-                        <span className="text-sm text-gray-500">Thinking...</span>
+                   <div className="bg-[#1E1E2D] border border-white/5 rounded-2xl p-4 rounded-tl-none flex items-center gap-2 shadow-sm">
+                        <Loader2 size={16} className="animate-spin text-indigo-500" />
+                        <span className="text-sm text-gray-400">Thinking...</span>
                    </div>
                 </div>
               )}
               <div ref={messagesEndRef} />
             </div>
 
-            <div className="p-4 bg-white border-t border-gray-100">
+            <div className="p-4 bg-[#1E1E2D] border-t border-white/5">
                 <div className="flex gap-2 max-w-4xl mx-auto">
                     <input
                         type="text"
@@ -189,13 +189,13 @@ const AIAssistant = () => {
                         onChange={(e) => setInputMessage(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && !thinking && handleSendMessage()}
                         placeholder="Type a message..."
-                        className="flex-1 p-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder:text-gray-400"
+                        className="flex-1 p-3 bg-[#151521] border border-white/5 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all placeholder:text-gray-600 text-white"
                         disabled={thinking}
                     />
                     <button
                         onClick={handleSendMessage}
                         disabled={!inputMessage.trim() || thinking}
-                        className="p-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-md active:scale-95"
+                        className="p-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-indigo-500/20 active:scale-95"
                     >
                         <Send size={20} />
                     </button>
@@ -206,14 +206,14 @@ const AIAssistant = () => {
 
         {/* KEYWORD MODE */}
         {mode === 'keywords' && (
-          <div className="absolute inset-0 flex flex-col md:flex-row overflow-hidden bg-white">
+          <div className="absolute inset-0 flex flex-col md:flex-row overflow-hidden bg-[#1E1E2D]">
              {/* Same Keyword UI as before, just wrapped */}
-             <div className="flex-1 p-6 border-b md:border-b-0 md:border-r border-gray-100 flex flex-col overflow-y-auto">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+             <div className="flex-1 p-6 border-b md:border-b-0 md:border-r border-white/5 flex flex-col overflow-y-auto">
+                <label className="block text-sm font-semibold text-gray-300 mb-2">
                     Job Description / Role
                 </label>
                 <textarea
-                    className="flex-1 w-full p-4 border border-gray-200 rounded-xl resize-none focus:ring-2 focus:ring-blue-500 outline-none text-sm bg-gray-50/50 min-h-[300px]"
+                    className="flex-1 w-full p-4 border border-white/5 rounded-xl resize-none focus:ring-2 focus:ring-indigo-500 outline-none text-sm bg-[#151521] text-white placeholder-gray-600 min-h-[300px]"
                     placeholder="Paste JD here..."
                     value={jobDescription}
                     onChange={(e) => setJobDescription(e.target.value)}
@@ -224,8 +224,8 @@ const AIAssistant = () => {
                     disabled={loadingKeywords || !jobDescription.trim()}
                     className={`flex items-center gap-2 px-6 py-2.5 rounded-lg font-medium transition-all ${
                         loadingKeywords || !jobDescription.trim()
-                        ? "bg-gray-400 text-blue-600 cursor-not-allowed"
-                        : "bg-blue-600 text-white hover:bg-blue-700 shadow-md"
+                        ? "bg-[#151521] text-gray-500 cursor-not-allowed border border-white/5"
+                        : "bg-indigo-600 text-white hover:bg-indigo-500 shadow-lg shadow-indigo-500/20"
                     }`}
                     >
                     {loadingKeywords ? <Loader2 size={18} className="animate-spin" /> : <Sparkles size={18} />}
@@ -234,13 +234,13 @@ const AIAssistant = () => {
                 </div>
             </div>
 
-            <div className="flex-1 p-6 bg-gray-50/50 flex flex-col overflow-y-auto">
+            <div className="flex-1 p-6 bg-[#151521]/50 flex flex-col overflow-y-auto">
                 <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-                        <Sparkles size={16} className="text-blue-500" /> Matches
+                    <h2 className="text-sm font-semibold text-gray-300 flex items-center gap-2">
+                        <Sparkles size={16} className="text-indigo-400" /> Matches
                     </h2>
                     {keywords.length > 0 && (
-                        <button onClick={copyToClipboard} className="text-xs flex items-center gap-1 px-3 py-1.5 bg-white border rounded-md">
+                        <button onClick={copyToClipboard} className="text-xs flex items-center gap-1 px-3 py-1.5 bg-[#1E1E2D] border border-white/5 rounded-md text-gray-300 hover:text-white hover:bg-white/5 transition-colors">
                             {copied ? <Check size={14} /> : <Copy size={14} />} {copied ? "Copied" : "Copy"}
                         </button>
                     )}
@@ -248,16 +248,16 @@ const AIAssistant = () => {
                 {keywords.length > 0 ? (
                     <div className="flex flex-wrap gap-2 animate-in fade-in slide-in-from-bottom-2">
                         {keywords.map((k, i) => (
-                            <span key={i} className="px-3 py-1.5 bg-white border border-blue-100 text-blue-700 rounded-full text-sm font-medium shadow-sm">{k}</span>
+                            <span key={i} className="px-3 py-1.5 bg-[#1E1E2D] border border-white/10 text-indigo-300 rounded-full text-sm font-medium shadow-sm">{k}</span>
                         ))}
                         {keywordSource === 'local_fallback' && (
-                             <div className="w-full mt-4 p-3 bg-yellow-50 text-yellow-800 text-xs rounded-lg border border-yellow-100 flex gap-2">
+                             <div className="w-full mt-4 p-3 bg-yellow-500/10 text-yellow-400 text-xs rounded-lg border border-yellow-500/20 flex gap-2">
                                 <AlertCircle size={14} /> Local Mode: Results may be generic.
                              </div>
                         )}
                     </div>
                 ) : (
-                    <div className="flex-1 flex flex-col items-center justify-center text-gray-400">
+                    <div className="flex-1 flex flex-col items-center justify-center text-gray-600">
                         <Bot size={40} className="mb-2 opacity-50" />
                         <p className="text-sm">Keywords will appear here</p>
                     </div>

@@ -246,14 +246,14 @@ const CreateResume = () => {
     <div className="max-w-4xl mx-auto space-y-8 pb-32">
       <div className="flex items-center justify-between">
         <div>
-           <Link to="/dashboard/my-resumes" className="text-sm text-gray-500 hover:text-gray-900">← Back to My Resumes</Link>
-           <h1 className="text-2xl font-bold text-gray-800 mt-1">{id ? 'Edit Resume' : 'Create New Resume'}</h1>
+           <Link to="/dashboard/my-resumes" className="text-sm text-gray-400 hover:text-white transition-colors">← Back to My Resumes</Link>
+           <h1 className="text-2xl font-bold text-gray-100 mt-1">{id ? 'Edit Resume' : 'Create New Resume'}</h1>
         </div>
         
         <button 
           onClick={handleSubmit} 
           disabled={loading}
-          className="flex items-center gap-2 px-6 py-2.5 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 disabled:opacity-50 transition-all shadow-sm"
+          className="flex items-center gap-2 px-6 py-2.5 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-500 disabled:opacity-50 transition-all shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/30"
         >
           {loading ? 'Saving...' : (
              <>
@@ -265,87 +265,87 @@ const CreateResume = () => {
       </div>
 
       {error && (
-        <div className="bg-red-50 text-red-600 p-4 rounded-lg flex items-center gap-2 text-sm">
+        <div className="bg-red-500/10 text-red-400 p-4 rounded-lg flex items-center gap-2 text-sm border border-red-500/20">
             <AlertCircle size={18} />
             {error}
         </div>
       )}
 
       {/* 1. Basic Info */}
-      <section className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
-        <h2 className="text-lg font-semibold text-gray-800 border-b border-gray-100 pb-2">1. Basic Information</h2>
+      <section className="bg-[#1E1E2D] p-6 rounded-xl shadow-xl border border-white/5 space-y-4">
+        <h2 className="text-lg font-semibold text-gray-100 border-b border-white/5 pb-2">1. Basic Information</h2>
         
         <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Resume Title (For your reference)</label>
+            <label className="block text-sm font-medium text-gray-400 mb-1">Resume Title (For your reference)</label>
             <input 
               type="text" 
               name="title"
               value={basicInfo.title}
               onChange={handleBasicChange}
               placeholder="e.g. Software Engineer Resume 2024" 
-              className="w-full p-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+              className="w-full p-2.5 bg-[#151521] border border-white/5 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none text-white placeholder-gray-600"
             />
         </div>
 
         <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Professional Summary</label>
+            <label className="block text-sm font-medium text-gray-400 mb-1">Professional Summary</label>
             <textarea 
               name="summary"
               value={basicInfo.summary}
               onChange={handleBasicChange}
               placeholder="Brief summary of your expertise..." 
-              className="w-full p-2.5 h-32 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none resize-none"
+              className="w-full p-2.5 h-32 bg-[#151521] border border-white/5 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none resize-none text-white placeholder-gray-600"
             ></textarea>
         </div>
       </section>
 
       {/* 2. Contact Info */}
-      <section className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 space-y-4">
-        <h2 className="text-lg font-semibold text-gray-800 border-b border-gray-100 pb-2">2. Personal Details</h2>
+      <section className="bg-[#1E1E2D] p-6 rounded-xl shadow-xl border border-white/5 space-y-4">
+        <h2 className="text-lg font-semibold text-gray-100 border-b border-white/5 pb-2">2. Personal Details</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Full Name</label>
                 <input 
                   type="text" 
                   name="fullName"
                   value={contactInfo.fullName || ""}
                   onChange={handleContactChange}
                   placeholder="John Doe" 
-                  className="w-full p-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                  className="w-full p-2.5 bg-[#151521] border border-white/5 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none text-white placeholder-gray-600"
                 />
             </div>
             <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Job Title</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Job Title</label>
                 <input 
                   type="text" 
                   name="jobTitle"
                   value={contactInfo.jobTitle || ""}
                   onChange={handleContactChange}
                   placeholder="Software Engineer" 
-                  className="w-full p-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                  className="w-full p-2.5 bg-[#151521] border border-white/5 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none text-white placeholder-gray-600"
                 />
             </div>
             <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Email</label>
                 <input 
                   type="email" 
                   name="email"
                   value={contactInfo.email}
                   onChange={handleContactChange}
                   placeholder="you@example.com" 
-                  className="w-full p-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                  className="w-full p-2.5 bg-[#151521] border border-white/5 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none text-white placeholder-gray-600"
                 />
             </div>
             <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                <label className="block text-sm font-medium text-gray-400 mb-1">Phone</label>
                 <input 
                   type="tel" 
                   name="phone"
                   value={contactInfo.phone}
                   onChange={handleContactChange}
                   placeholder="+1 234 567 890" 
-                  className="w-full p-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                  className="w-full p-2.5 bg-[#151521] border border-white/5 rounded-lg focus:ring-2 focus:ring-indigo-500 outline-none text-white placeholder-gray-600"
                 />
             </div>
         </div>
@@ -354,13 +354,13 @@ const CreateResume = () => {
       </section>
 
       {/* 3. Skills */}
-      <section className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-        <h2 className="text-lg font-semibold text-gray-800 border-b border-gray-100 pb-2 mb-4">3. Skills</h2>
+      <section className="bg-[#1E1E2D] p-6 rounded-xl shadow-xl border border-white/5">
+        <h2 className="text-lg font-semibold text-gray-100 border-b border-white/5 pb-2 mb-4">3. Skills</h2>
         <SkillInput skills={skills} onAdd={addSkill} onRemove={removeSkill} />
       </section>
     
       {/* 4. Education */}
-      <section className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+      <section className="bg-[#1E1E2D] p-6 rounded-xl shadow-xl border border-white/5">
         <EducationForm 
             education={education}
             onAdd={addEducation}
@@ -370,7 +370,7 @@ const CreateResume = () => {
       </section>
 
       {/* 5. Projects */}
-      <section className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+      <section className="bg-[#1E1E2D] p-6 rounded-xl shadow-xl border border-white/5">
         <ProjectForm 
             projects={projects}
             onAdd={addProject}
@@ -381,7 +381,7 @@ const CreateResume = () => {
 
       {/* Optional Sections */}
       {showLanguages && (
-          <section className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 animate-in fade-in slide-in-from-bottom-2">
+          <section className="bg-[#1E1E2D] p-6 rounded-xl shadow-xl border border-white/5 animate-in fade-in slide-in-from-bottom-2">
             <ListInput 
                 title="Languages" 
                 items={languages} 
@@ -390,12 +390,12 @@ const CreateResume = () => {
                 onItemRemove={(i) => handleListRemove(setLanguages, languages, i)}
                 placeholder="e.g. English (Native)"
             />
-            <button onClick={() => setShowLanguages(false)} className="text-sm text-red-500 mt-2 hover:underline">Remove Section</button>
+            <button onClick={() => setShowLanguages(false)} className="text-sm text-red-400 mt-2 hover:underline">Remove Section</button>
           </section>
       )}
 
       {showCertifications && (
-          <section className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 animate-in fade-in slide-in-from-bottom-2">
+          <section className="bg-[#1E1E2D] p-6 rounded-xl shadow-xl border border-white/5 animate-in fade-in slide-in-from-bottom-2">
              <ListInput 
                 title="Certifications" 
                 items={certifications} 
@@ -404,12 +404,12 @@ const CreateResume = () => {
                 onItemRemove={(i) => handleListRemove(setCertifications, certifications, i)}
                 placeholder="e.g. AWS Certified Solutions Architect"
             />
-             <button onClick={() => setShowCertifications(false)} className="text-sm text-red-500 mt-2 hover:underline">Remove Section</button>
+             <button onClick={() => setShowCertifications(false)} className="text-sm text-red-400 mt-2 hover:underline">Remove Section</button>
           </section>
       )}
       
       {showAwards && (
-          <section className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 animate-in fade-in slide-in-from-bottom-2">
+          <section className="bg-[#1E1E2D] p-6 rounded-xl shadow-xl border border-white/5 animate-in fade-in slide-in-from-bottom-2">
              <ListInput 
                 title="Awards & Honors" 
                 items={awards} 
@@ -418,13 +418,13 @@ const CreateResume = () => {
                 onItemRemove={(i) => handleListRemove(setAwards, awards, i)}
                  placeholder="e.g. Employee of the Month"
             />
-             <button onClick={() => setShowAwards(false)} className="text-sm text-red-500 mt-2 hover:underline">Remove Section</button>
+             <button onClick={() => setShowAwards(false)} className="text-sm text-red-400 mt-2 hover:underline">Remove Section</button>
           </section>
       )}
 
       {/* Custom Sections */}
       {customSections.map((section) => (
-          <section key={section.id} className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 animate-in fade-in slide-in-from-bottom-2 relative">
+          <section key={section.id} className="bg-[#1E1E2D] p-6 rounded-xl shadow-xl border border-white/5 animate-in fade-in slide-in-from-bottom-2 relative">
              <ListInput 
                 title={section.title} 
                 items={section.items} 
@@ -435,7 +435,7 @@ const CreateResume = () => {
             />
              <button 
                 onClick={() => removeCustomSection(section.id)} 
-                className="text-sm text-red-500 mt-2 hover:underline flex items-center gap-1"
+                className="text-sm text-red-400 mt-2 hover:underline flex items-center gap-1"
             >
                 <Trash2 size={14} /> Remove {section.title} Section
             </button>
@@ -443,13 +443,13 @@ const CreateResume = () => {
       ))}
 
       {/* Add Section Button Panel */}
-      <div className="p-6 bg-gray-50 border-2 border-dashed border-gray-200 rounded-xl text-center">
+      <div className="p-6 bg-[#151521] border-2 border-dashed border-white/5 rounded-xl text-center">
         <h3 className="text-gray-500 font-medium mb-4">Add More Sections</h3>
         <div className="flex flex-wrap justify-center gap-3">
              {!showLanguages && (
                 <button 
                     onClick={() => setShowLanguages(true)}
-                    className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-blue-400 hover:text-blue-600 transition-all text-sm font-medium"
+                    className="flex items-center gap-2 px-4 py-2 bg-[#1E1E2D] border border-white/5 rounded-lg shadow-sm hover:border-indigo-500/50 hover:text-indigo-400 text-gray-300 transition-all text-sm font-medium"
                 >
                     <Plus size={16} /> Languages
                 </button>
@@ -457,7 +457,7 @@ const CreateResume = () => {
              {!showCertifications && (
                 <button 
                     onClick={() => setShowCertifications(true)}
-                    className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-blue-400 hover:text-blue-600 transition-all text-sm font-medium"
+                    className="flex items-center gap-2 px-4 py-2 bg-[#1E1E2D] border border-white/5 rounded-lg shadow-sm hover:border-indigo-500/50 hover:text-indigo-400 text-gray-300 transition-all text-sm font-medium"
                 >
                     <Plus size={16} /> Certifications
                 </button>
@@ -465,7 +465,7 @@ const CreateResume = () => {
               {!showAwards && (
                 <button 
                     onClick={() => setShowAwards(true)}
-                    className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg shadow-sm hover:border-blue-400 hover:text-blue-600 transition-all text-sm font-medium"
+                    className="flex items-center gap-2 px-4 py-2 bg-[#1E1E2D] border border-white/5 rounded-lg shadow-sm hover:border-indigo-500/50 hover:text-indigo-400 text-gray-300 transition-all text-sm font-medium"
                 >
                     <Plus size={16} /> Awards
                 </button>
@@ -479,19 +479,19 @@ const CreateResume = () => {
                         value={newSectionTitle}
                         onChange={(e) => setNewSectionTitle(e.target.value)}
                         placeholder="Section Name (e.g. Hobbies)"
-                        className="px-3 py-2 border border-blue-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                        className="px-3 py-2 bg-[#151521] border border-indigo-500/50 rounded-lg outline-none focus:ring-2 focus:ring-indigo-500 text-white placeholder-gray-600 text-sm"
                         autoFocus
                         onKeyDown={(e) => e.key === 'Enter' && addCustomSection()}
                     />
                     <button 
                         onClick={addCustomSection}
-                        className="p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                        className="p-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-500"
                     >
                         <Plus size={16} />
                     </button>
                     <button 
                         onClick={() => setIsAddingSection(false)}
-                        className="p-2 text-gray-500 hover:bg-gray-200 rounded-lg"
+                        className="p-2 text-gray-500 hover:bg-white/10 rounded-lg"
                     >
                         <X size={16} />
                     </button>
@@ -499,7 +499,7 @@ const CreateResume = () => {
              ) : (
                 <button 
                     onClick={() => setIsAddingSection(true)}
-                    className="flex items-center gap-2 px-4 py-2 bg-white border border-dashed border-blue-300 text-blue-600 rounded-lg shadow-sm hover:bg-blue-50 transition-all text-sm font-medium"
+                    className="flex items-center gap-2 px-4 py-2 bg-[#1E1E2D] border border-dashed border-indigo-500/30 text-indigo-400 rounded-lg shadow-sm hover:bg-indigo-500/10 transition-all text-sm font-medium"
                 >
                     <Plus size={16} /> Custom Section
                 </button>
@@ -512,7 +512,7 @@ const CreateResume = () => {
         <button 
           onClick={handleSubmit} 
           disabled={loading}
-          className="flex items-center gap-2 px-8 py-3 text-base font-medium text-white bg-blue-600 rounded-xl hover:bg-blue-700 disabled:opacity-50 transition-all shadow-sm hover:shadow-md"
+          className="flex items-center gap-2 px-8 py-3 text-base font-medium text-white bg-indigo-600 rounded-xl hover:bg-indigo-500 disabled:opacity-50 transition-all shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/30"
         >
           {loading ? 'Saving...' : (
              <>

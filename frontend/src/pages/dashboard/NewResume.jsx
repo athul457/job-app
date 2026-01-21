@@ -92,10 +92,10 @@ const NewResume = () => {
   return (
     <div className="max-w-4xl mx-auto pb-20">
       <div className="mb-8">
-        <Link to="/dashboard/my-resumes" className="text-sm text-gray-500 hover:text-gray-900">
+        <Link to="/dashboard/my-resumes" className="text-sm text-gray-400 hover:text-white transition-colors">
           ← Back to My Resumes
         </Link>
-        <h1 className="text-2xl font-bold text-gray-800 mt-2 text-center">Create New Resume</h1>
+        <h1 className="text-2xl font-bold text-gray-100 mt-2 text-center">Create New Resume</h1>
       </div>
 
       <StepIndicator currentStep={step} />
@@ -110,8 +110,8 @@ const NewResume = () => {
       {step === 1 && (
         <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="text-center space-y-2">
-            <h2 className="text-xl font-semibold text-gray-800">Select a Template</h2>
-            <p className="text-gray-500">Choose a design that best fits your style.</p>
+            <h2 className="text-xl font-semibold text-gray-100">Select a Template</h2>
+            <p className="text-gray-400">Choose a design that best fits your style.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -130,7 +130,7 @@ const NewResume = () => {
             <button
               onClick={handleNext}
               disabled={!selectedTemplate}
-              className="flex items-center gap-2 px-8 py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-sm hover:shadow-md"
+              className="flex items-center gap-2 px-8 py-3 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/30"
             >
               Next Step <ArrowRight size={18} />
             </button>
@@ -142,21 +142,21 @@ const NewResume = () => {
       {step === 2 && (
         <div className="max-w-md mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div className="text-center space-y-2">
-            <h2 className="text-xl font-semibold text-gray-800">Name Your Resume</h2>
-            <p className="text-gray-500">Give your resume a memorable name.</p>
+            <h2 className="text-xl font-semibold text-gray-100">Name Your Resume</h2>
+            <p className="text-gray-400">Give your resume a memorable name.</p>
           </div>
 
-          <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-             <label className="block text-sm font-medium text-gray-700 mb-2">Resume Name</label>
+          <div className="bg-[#1E1E2D] p-8 rounded-2xl shadow-xl border border-white/5">
+             <label className="block text-sm font-medium text-gray-400 mb-2">Resume Name</label>
              <input 
                type="text" 
                value={resumeName}
                onChange={(e) => setResumeName(e.target.value)}
                placeholder="e.g. my_resume"
-               className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none text-lg"
+               className="w-full p-4 bg-[#151521] border border-white/5 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-lg text-white placeholder-gray-600"
                autoFocus
              />
-             <p className="text-xs text-gray-400 mt-2">
+             <p className="text-xs text-gray-500 mt-2">
                This name is for your reference only and won't appear on the resume.
              </p>
           </div>
@@ -164,7 +164,7 @@ const NewResume = () => {
           <div className="flex items-center justify-between pt-4">
             <button
               onClick={handleBack}
-              className="flex items-center gap-2 text-gray-600 hover:text-gray-900 font-medium px-4 py-2"
+              className="flex items-center gap-2 text-gray-400 hover:text-white font-medium px-4 py-2 transition-colors"
             >
               <ArrowLeft size={18} /> Back
             </button>
@@ -172,7 +172,7 @@ const NewResume = () => {
             <button
               onClick={handleCreate}
               disabled={loading || !resumeName.trim()}
-              className="flex items-center gap-2 px-8 py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 disabled:opacity-50 transition-all shadow-sm hover:shadow-md min-w-[160px] justify-center"
+              className="flex items-center gap-2 px-8 py-3 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-500 disabled:opacity-50 transition-all shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/30 min-w-[160px] justify-center"
             >
               {loading ? <Loader2 className="animate-spin" /> : "Create Resume"}
             </button>

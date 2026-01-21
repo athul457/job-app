@@ -39,21 +39,21 @@ const Sidebar = ({ isOpen, onClose }) => {
 
       {/* Sidebar Container */}
       <aside 
-        className={`fixed inset-y-0 left-0 z-50 w-72 bg-blue-50 border-r border-blue-100 shadow-xl md:shadow-none transform transition-transform duration-300 ease-in-out md:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 w-72 bg-[#1E1E2D] border-r border-white/5 shadow-2xl transform transition-transform duration-300 ease-in-out md:translate-x-0 ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         {/* Logo */}
-        <div className="flex items-center justify-between p-6 border-b border-blue-100 h-20">
+        <div className="flex items-center justify-between p-6 border-b border-white/5 h-20">
           <div className="flex items-center gap-3">
-             <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-200">
+             <div className="w-10 h-10 bg-gradient-to-tr from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-indigo-500/20">
                <Briefcase size={22} strokeWidth={2.5} />
              </div>
-             <span className="text-xl font-bold text-gray-900 tracking-tight">JobReady</span>
+             <span className="text-xl font-bold text-white tracking-tight">JobReady</span>
           </div>
           <button 
             onClick={onClose}
-            className="p-2 text-gray-500 hover:bg-gray-50 rounded-lg md:hidden"
+            className="p-2 text-gray-400 hover:bg-white/5 rounded-lg md:hidden"
           >
             <X size={20} />
           </button>
@@ -62,7 +62,7 @@ const Sidebar = ({ isOpen, onClose }) => {
         {/* Navigation */}
         <div className="flex flex-col h-[calc(100vh-5rem)] justify-between p-4">
           <nav className="space-y-1">
-            <p className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 mt-2">Menu</p>
+            <p className="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 mt-2">Menu</p>
             {menuItems.map((item) => (
               <NavLink
                 key={item.path}
@@ -72,15 +72,15 @@ const Sidebar = ({ isOpen, onClose }) => {
                 className={({ isActive }) =>
                   `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group ${
                     isActive
-                      ? "bg-white text-blue-700 shadow-sm"
-                      : "text-gray-600 hover:bg-blue-100 hover:text-gray-900"
+                      ? "bg-indigo-600 shadow-lg shadow-indigo-500/30 text-white"
+                      : "text-gray-400 hover:bg-white/5 hover:text-white"
                   }`
                 }
               >
                 {/* Icon wrapper to ensure alignment */}
                 {({ isActive }) => (
                   <>
-                    <span className={isActive ? "text-blue-600" : "text-gray-400 group-hover:text-gray-600"}>
+                    <span className={isActive ? "text-white" : "text-gray-500 group-hover:text-gray-300 transition-colors"}>
                         {item.icon}
                     </span>
                     {item.label}
@@ -89,21 +89,21 @@ const Sidebar = ({ isOpen, onClose }) => {
               </NavLink>
             ))}
             
-            <p className="px-4 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 mt-6">Preferences</p>
+            <p className="px-4 text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 mt-6">Preferences</p>
             <NavLink
               to="/dashboard/settings"
               onClick={() => onClose()}
               className={({ isActive }) =>
                 `flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all duration-200 group ${
                   isActive
-                    ? "bg-white text-blue-700 shadow-sm"
-                    : "text-gray-600 hover:bg-blue-100 hover:text-gray-900"
+                    ? "bg-indigo-600 shadow-lg shadow-indigo-500/30 text-white"
+                    : "text-gray-400 hover:bg-white/5 hover:text-white"
                 }`
               }
             >
               {({ isActive }) => (
                 <>
-                  <Settings size={20} className={isActive ? "text-blue-600" : "text-gray-400 group-hover:text-gray-600"} />
+                  <Settings size={20} className={isActive ? "text-white" : "text-gray-500 group-hover:text-gray-300 transition-colors"} />
                   Settings
                 </>
               )}
@@ -111,12 +111,12 @@ const Sidebar = ({ isOpen, onClose }) => {
           </nav>
 
           {/* User / Logout */}
-          <div className="border-t border-blue-100 pt-4">
+          <div className="border-t border-white/5 pt-4">
             <button 
               onClick={logout}
-              className="flex items-center gap-3 px-4 py-3 w-full text-sm font-medium text-gray-600 hover:bg-red-50 hover:text-red-600 rounded-xl transition-colors group"
+              className="flex items-center gap-3 px-4 py-3 w-full text-sm font-medium text-gray-400 hover:bg-red-500/10 hover:text-red-400 rounded-xl transition-colors group"
             >
-              <LogOut size={20} className="text-gray-400 group-hover:text-red-500" />
+              <LogOut size={20} className="text-gray-500 group-hover:text-red-400 transition-colors" />
               <span>Sign Out</span>
             </button>
           </div>

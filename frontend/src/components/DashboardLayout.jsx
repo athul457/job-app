@@ -7,7 +7,7 @@ const DashboardLayout = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-[#151521] flex text-gray-100 font-sans selection:bg-indigo-500/30">
       {/* Sidebar (Fixed) */}
       <Sidebar 
         isOpen={isSidebarOpen} 
@@ -18,7 +18,7 @@ const DashboardLayout = () => {
       <div className="flex-1 flex flex-col min-w-0 md:pl-72 transition-all duration-300">
         
         {/* Sticky Header */}
-        <header className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-gray-100 px-6 py-3">
+        <header className="sticky top-0 z-30 bg-[#151521]/80 backdrop-blur-xl border-b border-white/5 px-6 py-3">
           <DashboardNavbar onMenuClick={() => setIsSidebarOpen(true)} />
         </header>
 

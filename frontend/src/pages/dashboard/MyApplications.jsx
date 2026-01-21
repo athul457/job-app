@@ -46,12 +46,12 @@ const MyApplications = () => {
 
     const getStatusColor = (status) => {
         switch (status) {
-            case 'Applied': return 'bg-blue-50 text-blue-700';
-            case 'Reviewed': return 'bg-yellow-50 text-yellow-700';
-            case 'Interview': return 'bg-purple-50 text-purple-700';
-            case 'Hired': return 'bg-green-50 text-green-700';
-            case 'Rejected': return 'bg-red-50 text-red-700';
-            default: return 'bg-gray-50 text-gray-700';
+            case 'Applied': return 'bg-blue-500/10 text-blue-400 border border-blue-500/20';
+            case 'Reviewed': return 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20';
+            case 'Interview': return 'bg-purple-500/10 text-purple-400 border border-purple-500/20';
+            case 'Hired': return 'bg-green-500/10 text-green-400 border border-green-500/20';
+            case 'Rejected': return 'bg-red-500/10 text-red-400 border border-red-500/20';
+            default: return 'bg-gray-500/10 text-gray-400 border border-white/5';
         }
     };
 
@@ -66,45 +66,45 @@ const MyApplications = () => {
     return (
         <div className="space-y-6 pb-20">
             <div>
-                <h1 className="text-2xl font-bold text-gray-800">My Applications</h1>
-                <p className="text-gray-500 mt-1">Track the status of your job applications.</p>
+                <h1 className="text-2xl font-bold text-gray-100">My Applications</h1>
+                <p className="text-gray-400 mt-1">Track the status of your job applications.</p>
             </div>
 
             {loading ? (
-                <div className="flex justify-center py-20"><Loader2 className="animate-spin text-blue-600" size={40} /></div>
+                <div className="flex justify-center py-20"><Loader2 className="animate-spin text-indigo-500" size={40} /></div>
             ) : applications.length > 0 ? (
-                <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+                <div className="bg-[#1E1E2D] rounded-xl shadow-xl border border-white/5 overflow-hidden">
                     <div className="overflow-x-auto">
                         <table className="w-full text-left">
-                            <thead className="bg-gray-50 border-b border-gray-100">
+                            <thead className="bg-[#151521] border-b border-white/5">
                                 <tr>
-                                    <th className="px-6 py-4 font-semibold text-gray-600 text-sm">Job Role</th>
-                                    <th className="px-6 py-4 font-semibold text-gray-600 text-sm">Company</th>
-                                    <th className="px-6 py-4 font-semibold text-gray-600 text-sm">Date Applied</th>
-                                    <th className="px-6 py-4 font-semibold text-gray-600 text-sm">Resume Used</th>
-                                    <th className="px-6 py-4 font-semibold text-gray-600 text-sm">Status</th>
-                                    <th className="px-6 py-4 font-semibold text-gray-600 text-sm text-right">Action</th>
+                                    <th className="px-6 py-4 font-semibold text-gray-400 text-sm">Job Role</th>
+                                    <th className="px-6 py-4 font-semibold text-gray-400 text-sm">Company</th>
+                                    <th className="px-6 py-4 font-semibold text-gray-400 text-sm">Date Applied</th>
+                                    <th className="px-6 py-4 font-semibold text-gray-400 text-sm">Resume Used</th>
+                                    <th className="px-6 py-4 font-semibold text-gray-400 text-sm">Status</th>
+                                    <th className="px-6 py-4 font-semibold text-gray-400 text-sm text-right">Action</th>
                                 </tr>
                             </thead>
-                            <tbody className="divide-y divide-gray-100">
+                            <tbody className="divide-y divide-white/5">
                                 {applications.map((app) => (
-                                    <tr key={app._id} className="hover:bg-gray-50/50 transition-colors">
+                                    <tr key={app._id} className="hover:bg-white/5 transition-colors group">
                                         <td className="px-6 py-4">
-                                            <div className="font-medium text-gray-900">{app.job?.title || "Unknown Job"}</div>
+                                            <div className="font-medium text-gray-200 group-hover:text-indigo-400 transition-colors">{app.job?.title || "Unknown Job"}</div>
                                             <div className="text-xs text-gray-500 flex items-center gap-1 mt-0.5">
                                                 <Briefcase size={10} /> {app.job?.type}
                                             </div>
                                         </td>
                                         <td className="px-6 py-4">
                                             <div className="flex items-center gap-2">
-                                                <Building size={16} className="text-gray-400" />
-                                                <span className="text-gray-700">{app.job?.company}</span>
+                                                <Building size={16} className="text-gray-600 group-hover:text-gray-400 transition-colors" />
+                                                <span className="text-gray-400">{app.job?.company}</span>
                                             </div>
                                         </td>
-                                        <td className="px-6 py-4 text-sm text-gray-600">
+                                        <td className="px-6 py-4 text-sm text-gray-400">
                                             {new Date(app.createdAt).toLocaleDateString()}
                                         </td>
-                                        <td className="px-6 py-4 text-sm text-gray-600">
+                                        <td className="px-6 py-4 text-sm text-gray-400">
                                             {app.resume?.title || "Deleted Resume"}
                                         </td>
                                         <td className="px-6 py-4">
@@ -117,14 +117,14 @@ const MyApplications = () => {
                                             <div className="flex items-center justify-end gap-3">
                                                 <Link 
                                                     to={`/dashboard/jobs/${app.job?._id}`}
-                                                    className="text-blue-600 hover:text-blue-800 text-sm font-medium hover:underline"
+                                                    className="text-indigo-400 hover:text-indigo-300 text-sm font-medium hover:underline"
                                                 >
                                                     View Job
                                                 </Link>
                                                 <button
                                                     onClick={() => handleWithdraw(app._id)}
                                                     disabled={withdrawingId === app._id}
-                                                    className="text-red-500 hover:text-red-700 p-1.5 hover:bg-red-50 rounded-md transition-colors"
+                                                    className="text-red-500 hover:text-red-400 p-1.5 hover:bg-red-500/10 rounded-md transition-colors"
                                                     title="Withdraw Application"
                                                 >
                                                     {withdrawingId === app._id ? (
@@ -142,13 +142,13 @@ const MyApplications = () => {
                     </div>
                 </div>
             ) : (
-                <div className="text-center py-20 bg-white rounded-xl border border-gray-100 border-dashed">
-                    <div className="inline-flex h-16 w-16 bg-blue-50 rounded-full items-center justify-center text-blue-500 mb-4">
+                <div className="text-center py-20 bg-[#1E1E2D] rounded-xl border border-white/5 border-dashed">
+                    <div className="inline-flex h-16 w-16 bg-[#151521] rounded-full items-center justify-center text-indigo-500 mb-4 shadow-inner">
                         <Briefcase size={32} />
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-800">No applications yet</h3>
+                    <h3 className="text-lg font-semibold text-gray-200">No applications yet</h3>
                     <p className="text-gray-500 mt-1 mb-6">Start exploring jobs and apply to your dream role!</p>
-                    <Link to="/dashboard/jobs" className="px-6 py-2.5 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors">
+                    <Link to="/dashboard/jobs" className="px-6 py-2.5 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-500/20">
                         Browse Jobs
                     </Link>
                 </div>
