@@ -22,7 +22,11 @@ app.use(helmet());
 app.use(express.json()); 
 
 app.use(cors({
-  origin: true, // Reflects the request origin, allowing all with credentials
+  origin: [
+    // "http://localhost:5173",
+    // "http://localhost:5174",
+    "https://easy-hunt-app.netlify.app"
+  ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   allowedHeaders: ["Content-Type", "Authorization"]
