@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cors({
   origin: [
     // "http://localhost:5173",
-    "https://easy-hunt-app.netlify.app/"
+    "https://easy-hunt-app.netlify.app"
     
   ],
   credentials: true,
