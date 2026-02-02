@@ -18,13 +18,13 @@ const aiRoutes = require('./routes/ai.routes');
 const app = express();
 
 // Security Middleware
-app.use(helmet()); // Set security headers
-app.use(express.json()); // Body limit is 10kb
+app.use(helmet()); 
+app.use(express.json()); 
 
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://idyllic-travesseiro-a022ea.netlify.app"
+    
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
